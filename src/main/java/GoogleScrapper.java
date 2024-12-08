@@ -12,6 +12,7 @@ public class GoogleScrapper {
         StringBuilder output = new StringBuilder();
         try {
             String url = "https://www.google.com/search?q=" + searchQuery.replace(" ", "+");
+            System.out.println("Fetching URL: " + url);
 
             Document doc = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
@@ -59,7 +60,7 @@ public class GoogleScrapper {
         String results = makeHttpRequest(userData);
 
         if (!results.isEmpty()) {
-            appendToFile("search_results.txt", results);
+            appendToFile("search_results.json", results);
         } else {
             System.out.println("No results found or an error occurred.");
         }
